@@ -30,8 +30,8 @@ function capturarProductos() {
         let precio = prompt("Ingrese el precio del producto:");
         precio = parseFloat(precio);
 
-        totalProductos += 1; // Incrementamos la cantidad de productos
-        totalPrecio += precio; // Sumamos el precio del producto al total
+        totalProductos += 1; 
+        totalPrecio += precio; 
 
         let agregarOtro = prompt("¿Desea agregar otro producto? (si/no):");
         if (agregarOtro !== "si") {
@@ -44,24 +44,24 @@ function capturarProductos() {
 
 function aplicarDescuentoCantidad(totalPrecio, totalProductos) {
     if (totalProductos > 5) {
-        totalPrecio = totalPrecio * 0.9; // 10% de descuento
+        totalPrecio = totalPrecio * 0.9; 
     }
     return totalPrecio;
 }
 
-// Función para calcular el IVA (19%)
+
 function calcularIVA(total) {
     return total * 0.19;
 }
 
 function aplicarDescuentoFinal(total) {
     if (total > 500000) {
-        total = total * 0.95; // 5% de descuento adicional
+        total = total * 0.95; 
     }
     return total;
 }
 
-// Función para calcular el total final
+
 function calcularTotalFinal(totalProductos, totalPrecio) {
     totalPrecio = aplicarDescuentoCantidad(totalPrecio, totalProductos);
     let iva = calcularIVA(totalPrecio);
@@ -70,3 +70,21 @@ function calcularTotalFinal(totalProductos, totalPrecio) {
 
     return totalPrecio;
 }
+
+function mostrarTotal(total) {
+    alert("El total a pagar es: $" + total); 
+}
+
+
+function sistemaVentas() {
+    if (iniciarSesion()) {
+        let resultado = capturarProductos();
+        let totalFinal = calcularTotalFinal(resultado.totalProductos, resultado.totalPrecio);
+        mostrarTotal(totalFinal);
+    } else {
+        alert("No se pudo iniciar sesión. El sistema se cerrará.");
+    }
+}
+
+
+sistemaVentas();
