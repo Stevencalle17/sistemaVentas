@@ -53,3 +53,20 @@ function aplicarDescuentoCantidad(totalPrecio, totalProductos) {
 function calcularIVA(total) {
     return total * 0.19;
 }
+
+function aplicarDescuentoFinal(total) {
+    if (total > 500000) {
+        total = total * 0.95; // 5% de descuento adicional
+    }
+    return total;
+}
+
+// Función para calcular el total final
+function calcularTotalFinal(totalProductos, totalPrecio) {
+    totalPrecio = aplicarDescuentoCantidad(totalPrecio, totalProductos);
+    let iva = calcularIVA(totalPrecio);
+    totalPrecio = totalPrecio + iva;
+    totalPrecio = aplicarDescuentoFinal(totalPrecio);
+
+    return totalPrecio;
+}
