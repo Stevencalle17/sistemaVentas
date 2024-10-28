@@ -41,3 +41,15 @@ function capturarProductos() {
 
     return { totalProductos: totalProductos, totalPrecio: totalPrecio };
 }
+
+function aplicarDescuentoCantidad(totalPrecio, totalProductos) {
+    if (totalProductos > 5) {
+        totalPrecio = totalPrecio * 0.9; // 10% de descuento
+    }
+    return totalPrecio;
+}
+
+// Función para calcular el IVA (19%)
+function calcularIVA(total) {
+    return total * 0.19;
+}
